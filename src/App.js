@@ -1,21 +1,22 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+
+function calcAge(age) {
+  return age * 365;
+}
+console.log(calcAge(10));
 
 function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
+        <p>Age to days.</p>
         <a
           className="App-link"
-          href="https://reactjs.org"
+          href="https://github.com/zajonesck"
           target="_blank"
           rel="noopener noreferrer"
         >
-          Learn React
+          Check out my GitHub here
         </a>
       </header>
     </div>
