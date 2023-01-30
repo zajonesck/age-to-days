@@ -5,11 +5,14 @@ function App() {
   const [ageInYears, setAgeInYears] = useState(10);
   const [ageInDays, setAgeInDays] = useState();
 
-  const handleChange = (e) => setAgeInYears(e.target.ageInYears);
+  function handleChange(e) {
+    setAgeInYears(e.target.value);
+  }
+
   function calcAge() {
+    // TODO - fix logic to calculate leap years based on every 4th year
     const days = ageInYears * 365 + (ageInYears % 4);
     setAgeInDays(days);
-    console.log(days);
   }
 
   return (
@@ -40,17 +43,5 @@ function App() {
     </div>
   );
 }
-// function Square({ val, dataTestId, chooseSquare }) {
-//   return (
-//     <div
-//       className="square"
-//       data-testid={dataTestId}
-//       id={dataTestId}
-//       onClick={chooseSquare}
-//     >
-//       {val}
-//     </div>
-//   );
-// }
 
 export default App;
