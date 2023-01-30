@@ -2,7 +2,7 @@ import "./App.css";
 import React, { useState } from "react";
 
 function App() {
-  const [ageInYears, setAgeInYears] = useState(10);
+  const [ageInYears, setAgeInYears] = useState("");
   const [ageInDays, setAgeInDays] = useState();
 
   function handleChange(e) {
@@ -11,7 +11,7 @@ function App() {
 
   function calcAge() {
     // TODO - fix logic to calculate leap years based on every 4th year
-    const days = ageInYears * 365 + (ageInYears % 4);
+    const days = ageInYears * 365 + Math.floor(ageInYears / 4);
     setAgeInDays(days);
   }
 
@@ -29,7 +29,7 @@ function App() {
 
         <button onClick={calcAge}>Days</button>
 
-        <p>{ageInDays}</p>
+        <p>You're {ageInDays} days old.</p>
 
         <a
           className="App-link"
