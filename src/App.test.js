@@ -5,7 +5,7 @@ import { render } from "@testing-library/react";
 import App from "./App";
 import "./App.css";
 
-describe("age to days", function () {
+describe("age to days", () => {
   // test("renders GitHub link", () => {
   //   render(<App />);
   //   const linkElement = screen.getByText(/Check out my GitHub here/i);

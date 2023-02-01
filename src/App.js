@@ -4,15 +4,19 @@ import DatePicker from "react-date-picker";
 
 function App() {
   const [birthDay, onChangeBirthDay] = useState(new Date());
-  let ageInDays;
+  const [ageInDays, onChangeAgeInDays] = useState(0);
 
   function handleChange(e) {
-    onChangeBirthDay(e.target.value);
-    const formattedBirthDay = new Date(birthDay);
-    const differenceInDates =
-      new Date().getTime() - formattedBirthDay.getTime();
+    console.log(e);
+    console.log(ageInDays);
+    onChangeBirthDay(e);
 
-    ageInDays = differenceInDates / (1000 * 3600 * 24);
+    // const formattedBirthDay = new Date(birthDay);
+    const differenceInDates = new Date().getTime() - e.getTime();
+
+    onChangeAgeInDays(differenceInDates / (1000 * 3600 * 24));
+    console.log("difference in days", differenceInDates);
+    console.log("age in days", ageInDays);
   }
 
   return (
