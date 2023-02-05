@@ -1,36 +1,48 @@
 import React from "react";
 import "@testing-library/jest-dom";
 
-import { render } from "@testing-library/react";
+import { render, screen } from "@testing-library/react";
 import App from "./App";
+
 import "./App.css";
 
 describe("age to days", () => {
-  // test("renders GitHub link", () => {
-  //   render(<App />);
-  //   const linkElement = screen.getByText(/Check out my GitHub here/i);
-  //   expect(linkElement).toBeInTheDocument();
-  // });
-  test("age in future", () => {
+  test("on render date is set to today", () => {
     render(<App />);
-    //pick a future date
-    const tomorrow = new Date();
+    const datePicker = screen.getByTestId("datePicker");
 
-    // add 10 days to today
-    tomorrow.setDate(new Date().getDate() + 10);
+    const ageInDays = screen.getByText(/You're 0 days old/i);
 
-    console.log(tomorrow);
+    expect(ageInDays).toBeInTheDocument();
+    expect(datePicker).toBeInTheDocument();
+  });
+
+  test("setting date in future should set age negative", () => {
+    render(<App />);
+    //rendering future date
+    const mockedTendaysAway = jest.fn();
+    const tenDaysAway = new Date();
+    const datePicker = screen.getByTestId("datePicker");
+
+    tenDaysAway.setDate(new Date().getDate() + 10);
+    console.log("datepicker", datePicker.defaultValue);
+    console.log(tenDaysAway);
     //verify handlechange is called
+    expect(mockedTendaysAway).toHaveBeenCalledTimes(0);
+
     //verify age in days is negative
   });
-  // test("present date", () => {
-  //   render(<App />);
-  //   const differenceInDays !> 0;
-  //   expect(differenceInDays).toBeInTheDocument();
-  // });
+
   // test("past date", () => {
   //   render(<App />);
   //   const differenceInDays !> 0;
   //   expect(differenceInDays).toBeInTheDocument();
   // });
+});
+describe("other tests", () => {
+  test("renders GitHub link", () => {
+    render(<App />);
+    const linkElement = screen.getByText(/Check out my GitHub here/i);
+    expect(linkElement).toBeInTheDocument();
+  });
 });

@@ -7,16 +7,11 @@ function App() {
   const [ageInDays, onChangeAgeInDays] = useState(0);
 
   function handleChange(e) {
-    console.log(e);
-    console.log(ageInDays);
     onChangeBirthDay(e);
 
-    // const formattedBirthDay = new Date(birthDay);
     const differenceInDates = new Date().getTime() - e.getTime();
 
     onChangeAgeInDays(differenceInDates / (1000 * 3600 * 24));
-    console.log("difference in days", differenceInDates);
-    console.log("age in days", ageInDays);
   }
 
   return (
@@ -24,7 +19,11 @@ function App() {
       <header className="App-header">
         <h1>Age to days</h1>
         <h3>Enter your birthday</h3>
-        <DatePicker onChange={handleChange} value={birthDay} />
+        <DatePicker
+          onChange={handleChange}
+          value={birthDay}
+          data-testid="datePicker"
+        />
 
         <p>You're {Math.floor(ageInDays)} days old</p>
 
